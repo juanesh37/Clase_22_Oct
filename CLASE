@@ -1,0 +1,50 @@
+-------------------------PROCEDIMIENTO ANÓNIMO (QUE SE ELIMINA AL CERRAR)-------------------------------
+--BLOQUE DE DECLARACIÓN
+DECLARE
+    a integer := 2;
+    b integer;
+
+
+--BLOQUE DE EJECUCIÓN
+BEGIN
+    b := a + 3;
+    dbms_output.put_line('El valor de a es: '|| a);
+    dbms_output.put_line('El valor de b es: '|| b);
+END;
+
+--TutorialsPoint.com
+
+------------------PROCEDIMIENTO NOMBRADO (QUE NO SE ELIMINA)---------------------------------------
+
+CREATE PROCEDURE SUMATORIA AS
+
+    a integer := 2;
+    b integer;
+
+
+--BLOQUE DE EJECUCIÓN
+BEGIN
+    b := a + 3;
+    dbms_output.put_line('El valor de a es: '|| a);
+    dbms_output.put_line('El valor de b es: '|| b);
+END;
+
+--PARA EJECUTAR EL PROC. ALMACENADO
+
+EXEC SUMATORIA;
+
+--------------------------------------------------------------
+CREATE PROCEDURE REMOVE_EMPLOYEE (EMPLOYEE_ID number) AS
+  total_employees number;
+BEGIN
+  total_employees := select count(*) from empleados;
+  delete from empleados where id = eliminar_empleado.id;
+  total_employees := total_employees - 1;
+  dbms_output.put_line('El empleado fue borrado exitosamente');
+  dbms_output.put_line('El nuevo número de empleados es: '|| total_employees);
+  commit;
+END;
+
+BEGIN
+  eliminar_empleado(3);
+END;
